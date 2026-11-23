@@ -56,6 +56,10 @@
 - `page.get_contents()` returns a `ContentStream` that can be **falsy** — test `is not None`, not truthiness.
 - A checker that finds *nothing* must fail, not pass.
 
+## CJK wordmarks
+- Customize stroke *endings* (cuts, angles), never stroke *structure*. Removing a stroke or swapping a component for a graphic turns the glyph into a misspelling that native readers spot instantly. Put brand graphics next to the characters instead.
+- Print rich black as C60 M40 Y40 K100 (240%). A straight ICC conversion of near-black lands around 350% total ink, which is over most printers' 300% limit.
+
 ## Delivery
 - Gmail caps a message at 25 MB *after* base64 (+~37%). Keep raw attachments ≤ ~18 MB.
 - macOS `ditto` zips add `__MACOSX` junk; Python `zipfile` writes UTF-8 names that Windows reads correctly.

@@ -56,6 +56,9 @@
 - `page.get_contents()` returns a `ContentStream` that can be **falsy** — test `is not None`, not truthiness.
 - A checker that finds *nothing* must fail, not pass.
 
+## Variable fonts
+- When outlining text from a variable font, take each glyph's advance from the instanced glyph set (`glyphSet[g].width`), not from `hmtx`. `hmtx` holds the default master's widths, so text set at another weight comes out too loose or too tight.
+
 ## CJK wordmarks
 - Customize stroke *endings* (cuts, angles), never stroke *structure*. Removing a stroke or swapping a component for a graphic turns the glyph into a misspelling that native readers spot instantly. Put brand graphics next to the characters instead.
 - Print rich black as C60 M40 Y40 K100 (240%). A straight ICC conversion of near-black lands around 350% total ink, which is over most printers' 300% limit.

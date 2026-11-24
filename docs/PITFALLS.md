@@ -41,6 +41,17 @@
 - `<path ... fill-opacity=.45/>` unquoted in HTML swallows the slash → the next element nests inside and vanishes.
 - Large screenshots occasionally exit with code 2 — retry.
 - Python 3.10 f-strings can't contain backslashes — build the substring first.
+- Headless Chrome won't make a window narrower than ~500 px: `--window-size=390,…` silently lays the page
+  out at 500 and crops the screenshot, so a mobile layout looks cut off on the right. Load the page in a
+  390 px wide `<iframe>` inside a wider window and crop the screenshot instead.
+- Text in an SVG you rasterize (librsvg / sharp) falls back to a default font when the font isn't installed
+  on that machine — share cards come out in Helvetica. Outline the text to paths before rasterizing.
+
+## Image pipeline (sharp)
+- In one sharp pipeline `resize()` runs before `composite()` whatever order you write them, so the overlay
+  is the wrong size ("Image to composite must have same dimensions or smaller"). Composite to a buffer first, then resize.
+- A generated SVG path with a single `NaN` coordinate (e.g. `Math.pow(negative, 1.4)`) makes the whole
+  path vanish without an error. Clamp inputs; a texture file of a few KB is the tell.
 
 ## Design judgment
 - Small shapes in a pattern lose identity (a short door reads as ▶).

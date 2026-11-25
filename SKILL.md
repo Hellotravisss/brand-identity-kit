@@ -39,3 +39,5 @@ by script and verified by machine**. Read `docs/METHOD.md` before starting; it i
 
 Python 3.10+: `fonttools skia-pathops pillow numpy pypdf python-pptx python-docx`.
 Headless Chrome for HTML → PNG/PDF. Adobe Illustrator for AI/EPS/CMYK (optional; SVG/PDF work without it).
+
+**Cross-cutting**: at every stage, generate references with an image model (`scripts/gemini_image.py`), then redraw as vectors in Illustrator. Never ship raw AI output; proof every word of text in it. See METHOD.md.

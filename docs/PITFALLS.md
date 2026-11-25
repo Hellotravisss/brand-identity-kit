@@ -78,3 +78,6 @@
 - Gmail caps a message at 25 MB *after* base64 (+~37%). Keep raw attachments ≤ ~18 MB.
 - macOS `ditto` zips add `__MACOSX` junk; Python `zipfile` writes UTF-8 names that Windows reads correctly.
 - Print `www.` only if it resolves.
+
+## Image models
+- Image models silently rewrite small text (script conversion, changed characters). Proof every word of any generated image that contains text, and never use one as the final artwork.

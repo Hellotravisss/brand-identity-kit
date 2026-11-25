@@ -131,6 +131,20 @@ with a "read me first". Email limits: keep each message's attachments ≤ ~18 MB
 
 ---
 
+## Across all phases · Generate references with an image model, redraw in Illustrator
+
+Use an image model (Gemini via `scripts/gemini_image.py`) at every design stage: copy tone, pattern
+directions, compositions, real-scene mockups. Treat its output as a **reference only**. The deliverable is
+always redrawn as vectors in Illustrator, with colors snapped to the spec; never ship the raw AI image, and
+don't let automatic tracing be the final artwork.
+
+- Feed it your own finished assets as reference images so logo and artwork stay faithful (a bag or card
+  mockup with the real artwork came out far more convincing than a hand-composited flat lay).
+- Send only your own design output or public material. Never client contact data, secrets or whole project folders.
+- The model redraws, it does not paste. Artwork survives; small text does not. State "do not change any
+  text, keep Simplified Chinese" in the prompt and **proof every word** of the result (a card address came back
+  converted to Traditional Chinese).
+
 ## The verification habit
 
 Never trust "it looks done". After every generation step: render it and **look**, or measure it.

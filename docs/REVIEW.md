@@ -1,14 +1,34 @@
 # Blind review — the acceptance gate for visual work
 
 **Acceptance line: the work is good enough to publish on Behance as a portfolio piece.**
-"All assets exist" and "usable" are not done. After **each complete version**, a second vision model scores it.
+"All assets exist" and "usable" are not done. After **each complete version**, other vision models score it.
 If the score is low, optimize and score again. The maker never grades their own work alone.
 
-## When
+## Two gates: design first, presentation second
 
-After a whole version (full case-study long image or board set), not after single fragments.
-It sits on top of your own check — open every image and compare it side by side with strong Behance
-case studies first. It does not replace that, and the person you work for still has the final say.
+Mockups and photographs lift the overall impression and can hide a weak system. Judge them separately.
+
+| Gate | What the judge sees | Prompt |
+|---|---|---|
+| **1 · Design** | Flat design sheets only: mark, graphic system, several layout skeletons, type, color. No photos, no mockups | `docs/review-prompt-design.txt` |
+| **2 · Presentation** | The full case study: boards plus applications and mockups | `docs/review-prompt.txt` |
+
+Do not start mockups until gate 1 is passed (or the owner decides to move on). Each gate has its own
+pass line and its own calibration. It sits on top of your own check; the person you work for has the final say.
+
+## Calibrate before you trust a pass line
+
+A threshold means nothing until you know what the judge gives to work that is already good.
+
+1. Pick 3 projects from a curated or featured gallery and 1 ordinary one, same category.
+2. Capture only the project images. **Crop out everything that reveals status**: platform chrome, feature
+   ribbons, like and view counts, author names. Attach them the same way you attach your own work.
+3. Score all four with every judge model, same prompt, blind.
+4. If the featured work scores clearly above the ordinary one (gap larger than the run-to-run noise),
+   set each model's pass line from **its own** featured scores. If it does not separate them, **there is no
+   numeric gate** with that judge: use the review only to find problems, and let the owner decide.
+5. Use the captures only for this internal check; do not publish or commit them. Record URLs and scores.
+   Recalibrate when the prompt, the model or the way of attaching files changes.
 
 ## Steps
 
@@ -21,39 +41,63 @@ case studies first. It does not replace that, and the person you work for still 
 2. **Privacy check.** Open what you are about to send. Unless the owner has decided otherwise, send only
    finished boards with fictional sample people: no real names, phones, faces or client documents, and ask
    before sending a project that is not cleared to be public. Never send credentials or whole project folders.
-3. **Blind prompt.** Send `docs/review-prompt.txt` unchanged, in a fresh conversation each time. Never say who
+3. **Blind prompt.** Send the gate's prompt unchanged, in a fresh conversation each time. Never say who
    made it, what the last score was, what changed, or what score you hope for.
-4. **Two runs** with the same model and the same way of attaching files. If the model is unavailable (quota, error), switch to another vision model
-   instead of waiting. Compare versions only between runs of the **same model and the same prompt**.
+4. **Who judges, how many times.** Two different models disagree in more useful ways than one model twice.
+
+   | Situation | Runs |
+   |---|---|
+   | Every version | one run from each of two models |
+   | Close to the pass line, deciding pass or fail | one more run from each |
+   | One model unavailable (quota, error) | two runs of the other; do not wait |
+
+   Compare versions only between runs of the **same model, prompt and way of attaching files**. With a
+   single run per model, a change of about 0.5 or less is not progress.
 5. **Confirm the judge can see.** The first time you use a model or a new way of attaching images, ask it for
    details only visible in the picture (a row of color names, captions). A judge that only got text will
    still happily return scores.
-6. **Save** the image, prompt, raw replies and a score table per version (`review/<date_version>/`).
+6. **Save** the images, prompt, raw replies and a score table per version (`review/<date_version>/`).
 
-## Pass line (default — the owner can change it)
+## Pass line
 
-- Mean total of two runs **≥ 8.0**, **and**
-- no dimension with a mean **below 7**.
+**There is no default number.** A numeric gate exists only where calibration (above) separated featured from
+ordinary work for that prompt, model and way of attaching files. In the first calibration it did not (see the
+table at the end), so with these prompts:
+
+- record every score, but **do not pass or fail work on it**;
+- use the reviews to find **verified hard errors** and **problems that both judges raise**;
+- **the owner decides** whether a version meets the portfolio line, helped by a side-by-side with featured work.
 
 The seven dimensions fit a brand case study. For other visual work (store screenshots, posters, UI), swap
 out the dimensions that cannot apply **before the first run**, then keep that prompt for every version.
 
 ## Handling the criticism
 
-Check every claim against the image **and the source files**, then sort it:
+The prompts ask for a fix with every problem. **Show the owner the fixes, not only the complaints**, every
+round, as a table: *problem · fix the judge proposed · what you will do* (do it / don't, with the reason /
+owner decides).
+
+Check every factual claim against the image **and the source files**, then sort it:
 
 | Kind | Action |
 |---|---|
 | Verified hard error (typo, wrong value, rules that contradict each other) | Fix now |
-| Fair weakness | Fix; start with what both runs (or both models) raise |
+| Fair weakness | Fix; start with what both models raise |
 | Conflicts with a locked decision (approved logo, client color, glyph structure) | Don't do it; record why |
 | Built on something the judge misread | Discard |
 
-## Rounds
+A proposed fix is advice from a judge that has not drawn it. Test it; it is not guaranteed to raise anything.
 
-At most **3 rounds**. If the mean does not rise by more than the noise between rounds, stop and bring the
-owner the scores, what was tried and what is still weak. Report every run, never only the best one.
-Never edit the prompt or the anchors to raise a score.
+## Rounds and stopping
+
+At most **3 rounds per gate**. Judge progress by the problems, not by score changes. When the last round left
+no verified hard error to fix, **stop polishing and diagnose** what remains:
+
+- **Structural** (for example the graphic system does not belong to the mark): propose a change of direction
+  to the owner; start a new round only after they agree.
+- **Matters of taste, or only details left:** bring the owner the work and the open points and ask whether to ship.
+
+Report every run, never only the best one. Never edit a prompt or its anchors to raise a score.
 
 ## How much to trust the number (first calibration, one project, small sample)
 
@@ -81,3 +125,25 @@ were read correctly in a sight test **without** the copy sheet. A full review wi
 more specific craft findings, including a palette color that was listed but never used on the other boards
 (verified in the source files). One retest each, so treat this as a direction, not a measurement.
 Scores from different input methods are not comparable.
+
+## Second calibration: the judges did not separate featured from ordinary work
+
+Same presentation prompt, project images only, one run per judge per project.
+
+| Work | Judge A | Judge B |
+|---|---|---|
+| Curated gallery project 1 | 5.7 | 7.3 |
+| Curated gallery project 2 | 5.7 | 5.3 |
+| Curated gallery project 3 | 5.4 | 5.1 |
+| Ordinary project | 6.0 | 4.9 |
+| Our own case study, after two rounds of revising to these judges | 6.3 | 6.0 |
+
+- Judge A put the ordinary project above all three curated ones. Judge B clearly separated only one of the three.
+- **No curated project reached a total of 8.** An uncalibrated "8.0 to pass" had been used before this; nothing
+  had ever shown it was reachable.
+- Our own higher score is not evidence that it is better: it had been revised against these judges' notes.
+  A guess, not tested: the rubric favors manual-style cases with rule boards over art-direction-led ones.
+- **They were good at hard errors.** Both judges independently found a broken printed slogan in one curated
+  project and a malformed email address in another; both were confirmed on the images.
+
+Four projects and one run each is a small sample. The design-gate prompt has not been calibrated.

@@ -11,9 +11,9 @@ The method is opinionated. Every rule below exists because skipping it cost a ro
 ## The acceptance line
 
 **A version of visual work is accepted only when it could be published on Behance as a portfolio piece.**
-Complete and usable is not enough: tell a story, lay out every board by hand, show believable mockups,
-proof both languages, use real data. After each version, run the blind review in `REVIEW.md`; if the score
-is below the pass line, optimize and review again.
+Get the **design** through first (flat sheets: mark, graphic system that grows out of the mark, layout
+skeletons, type, color), then build the presentation: tell a story, lay out every board by hand, show
+believable mockups, proof both languages, use real data. Review each gate blind as described in `REVIEW.md`; the scores find problems, they do not decide.
 
 ## Phase 0 · Three checks before you draw anything (10 minutes)
 

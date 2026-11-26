@@ -11,10 +11,12 @@ by script and verified by machine**. Read `docs/METHOD.md` before starting; it i
 
 ## Acceptance line (applies to every version)
 
-Visual work is done only when it **could be published on Behance as a portfolio piece**. After each complete
-version: assemble the long image, have a second vision model score it blind, optimize if low, repeat
-(≤ 3 rounds). Default pass: mean of two runs ≥ 8.0 and no dimension below 7. Full procedure, prompt and
-how far to trust the score: `docs/REVIEW.md`.
+Visual work is done only when it **could be published on Behance as a portfolio piece**. Two gates, scored
+blind by two different vision models: **design first** (flat sheets, no mockups), then **presentation**
+(the full case study). Do not pass or fail on a score unless calibration showed the judge separates featured
+from ordinary work (so far it has not): use reviews to catch hard errors and shared problems; the owner
+decides. Show the owner each proposed fix. At most 3 rounds per gate.
+Full procedure and prompts: `docs/REVIEW.md`.
 
 ## Workflow (one line per phase — details in METHOD.md)
 

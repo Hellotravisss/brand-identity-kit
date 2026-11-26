@@ -98,3 +98,12 @@
 - A fact the client gives you for the story may be confidential. Confirm it can be published **before** it goes on a board, and before the board goes to any external model. What was sent cannot be taken back.
 - Rounded plates over a repeat pattern chop motifs in half. Remove every motif that touches the plate (plus a margin) instead of covering it.
 - Auto-traced AI patterns can hide tiny wobbly shapes that read as `@` or `©` once repeated. Zoom into the smallest motif and redraw it geometrically.
+- Faint inner outlines in AI reference art quantize into **broken** lines (dashes, spurs, slivers). Deleting thin pieces by width leaves stubs, because the line's width varies. Define it by neighborhood instead: redraw one continuous hairline along every boundary between the two colors. Check first that the trace script reproduces the shipped files byte for byte, so rerunning it cannot overwrite hand edits.
+- A type specimen that sets the brand name in the base font shows the **uncustomized** letterforms next to the custom wordmark. Use neutral specimen characters.
+
+## Logo motion
+- To "write" a filled mark, reveal it along the stroke's skeleton by travelled distance. Hand-drawn masks leave burrs. At self-crossings, give the overlap to the later pass with a cut along the stroke edge (a rectangular exclusion leaves a visible step).
+- Render the final frame from the official lockup split into layers, then diff the last video frame against a one-shot render.
+- Measure smoothness: per-frame ink added (reveals) or per-frame displacement and change of speed (moves). Vision models may sample video at 1 fps and cannot judge stutter.
+- Check frame 0 as a still: art that is clipped on one side while the others have margin looks like a mistake.
+- Some desktop mail clients show only the first frame of a GIF. Do not offer a draw-on animation (blank first frame) as an email signature.

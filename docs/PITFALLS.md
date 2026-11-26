@@ -95,3 +95,6 @@
 - Figures in some display serifs default to old-style numerals. Turn on `lnum` for phone numbers, addresses and color codes (HarfBuzz feature when outlining, `font-variant-numeric` in SVG).
 - Never let an image model redraw your artwork inside a mockup; it quietly changes letterforms. Generate a **blank** scene, then warp the real vector artwork onto each surface in code: snap corners to image edges, multiply by the photo's own luminance, add its paper grain back, treat one-color printing as ink multiply. Keep the artwork's aspect (pad or crop, never stretch) and look at every edge close up.
 - Headless Chrome screenshots have a white background unless told otherwise: derive ink coverage from darkness, not from alpha.
+- A fact the client gives you for the story may be confidential. Confirm it can be published **before** it goes on a board, and before the board goes to any external model. What was sent cannot be taken back.
+- Rounded plates over a repeat pattern chop motifs in half. Remove every motif that touches the plate (plus a margin) instead of covering it.
+- Auto-traced AI patterns can hide tiny wobbly shapes that read as `@` or `©` once repeated. Zoom into the smallest motif and redraw it geometrically.

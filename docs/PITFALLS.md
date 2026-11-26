@@ -89,3 +89,9 @@
 - Scores are noisy and compressed: the same image moved 0.5, a badly broken layout lost under 1 point. Compare dimensions across two runs, not single totals.
 - Vision tools silently downscale (about 1 MP in one agent CLI). Send boards separately with zoom tiles and the source copy text; a stitched long page is the worst case for small type.
 - If a judge gets a file-reading tool, check from the tool-call log that it read every attachment, and discard the run if it did not.
+
+## Presentation boards and mockups
+- Headless Chrome **silently substitutes fonts** that are not installed: a type-specimen board can name one family and render another, and it can survive several rounds of review. Embed a subset of the real font files (fontTools `subset` → base64 `@font-face`) and look for a family-specific shape in the render.
+- Figures in some display serifs default to old-style numerals. Turn on `lnum` for phone numbers, addresses and color codes (HarfBuzz feature when outlining, `font-variant-numeric` in SVG).
+- Never let an image model redraw your artwork inside a mockup; it quietly changes letterforms. Generate a **blank** scene, then warp the real vector artwork onto each surface in code: snap corners to image edges, multiply by the photo's own luminance, add its paper grain back, treat one-color printing as ink multiply. Keep the artwork's aspect (pad or crop, never stretch) and look at every edge close up.
+- Headless Chrome screenshots have a white background unless told otherwise: derive ink coverage from darkness, not from alpha.

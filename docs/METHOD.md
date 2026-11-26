@@ -145,10 +145,11 @@ directions, compositions, real-scene mockups. Treat its output as a **reference 
 always redrawn as vectors in Illustrator, with colors snapped to the spec; never ship the raw AI image, and
 don't let automatic tracing be the final artwork.
 
-- Feed it your own finished assets as reference images so logo and artwork stay faithful (a bag or card
-  mockup with the real artwork came out far more convincing than a hand-composited flat lay).
+- For **portfolio and final mockups**, have it generate **blank scenes only** and composite your vector artwork
+  onto them yourself (see PITFALLS). Feeding it your artwork as a reference looks convincing but redraws
+  letterforms; use that only for exploring directions.
 - Send only your own design output or public material. Never client contact data, secrets or whole project folders.
-- The model redraws, it does not paste. Artwork survives; small text does not. State "do not change any
+- The model redraws, it does not paste. Neither small text nor wordmark letterforms are safe. State "do not change any
   text, keep Simplified Chinese" in the prompt and **proof every word** of the result (a card address came back
   converted to Traditional Chinese).
 

@@ -87,3 +87,5 @@
 - A judge that never received the image still returns confident scores. Run a sight test the first time you use a model or attachment method.
 - A command-line agent used as judge may go off and search the web about the prompt instead of looking at the image. Forbid tools in the prompt, disable them in the call, and fail the run if any tool was called.
 - Scores are noisy and compressed: the same image moved 0.5, a badly broken layout lost under 1 point. Compare dimensions across two runs, not single totals.
+- Vision tools silently downscale (about 1 MP in one agent CLI). Send boards separately with zoom tiles and the source copy text; a stitched long page is the worst case for small type.
+- If a judge gets a file-reading tool, check from the tool-call log that it read every attachment, and discard the run if it did not.

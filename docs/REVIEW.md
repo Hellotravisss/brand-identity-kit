@@ -12,13 +12,18 @@ case studies first. It does not replace that, and the person you work for still 
 
 ## Steps
 
-1. **One image.** `python3 scripts/stitch_boards.py long.png board1.png board2.png …`
-2. **Privacy check.** Open it. Send only the finished boards, with fictional sample people. No real names,
-   phones, faces, client documents or project folders. If the project is not cleared to be public,
-   ask the owner before sending it to any external model.
+1. **Give the judge enough pixels.** Find out what your tool really delivers: one agent CLI shrank a
+   2800×1960 board to 1223×856, and a stitched long page shrinks far more. Prefer every board separately,
+   plus near-full-size zoom tiles for anything over ~1.6 MP, plus the **copy sheet** (the `<text>` strings
+   from the source SVG, or the copy doc) so typos and values are checked against text, not guessed from
+   pixels. A stitched long image (`python3 scripts/stitch_boards.py long.png board1.png …`) is the fallback
+   for a judge that takes only one image.
+2. **Privacy check.** Open what you are about to send. Unless the owner has decided otherwise, send only
+   finished boards with fictional sample people: no real names, phones, faces or client documents, and ask
+   before sending a project that is not cleared to be public. Never send credentials or whole project folders.
 3. **Blind prompt.** Send `docs/review-prompt.txt` unchanged, in a fresh conversation each time. Never say who
    made it, what the last score was, what changed, or what score you hope for.
-4. **Two runs** with the same model. If the model is unavailable (quota, error), switch to another vision model
+4. **Two runs** with the same model and the same way of attaching files. If the model is unavailable (quota, error), switch to another vision model
    instead of waiting. Compare versions only between runs of the **same model and the same prompt**.
 5. **Confirm the judge can see.** The first time you use a model or a new way of attaching images, ask it for
    details only visible in the picture (a row of color names, captions). A judge that only got text will
@@ -70,3 +75,9 @@ A four-board brand sheet without any application mockups, scored with the prompt
   word that was not there**. In a sight test it also got one digit of a hex value wrong.
 - One model caught a real contradiction (a color rule on one board broken on another) that the other model and
   the maker had both missed. It also proposed redrawing an approved logo, which was rejected.
+
+**After switching to separate boards + zoom tiles:** the two misread items (the headline and the hex digit)
+were read correctly in a sight test **without** the copy sheet. A full review with tiles and copy sheet gave
+more specific craft findings, including a palette color that was listed but never used on the other boards
+(verified in the source files). One retest each, so treat this as a direction, not a measurement.
+Scores from different input methods are not comparable.

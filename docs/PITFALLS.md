@@ -102,7 +102,10 @@
 - A type specimen that sets the brand name in the base font shows the **uncustomized** letterforms next to the custom wordmark. Use neutral specimen characters.
 
 ## Logo motion
-- To "write" a filled mark, reveal it along the stroke's skeleton by travelled distance. Hand-drawn masks leave burrs. At self-crossings, give the overlap to the later pass with a cut along the stroke edge (a rectangular exclusion leaves a visible step).
+- To "write" a filled mark, **split it into strokes first**: each stroke is a ribbon whose two edges are the mark's own outline segments, extended through a crossing by a short curve along the incoming tangent. Reveal along the ribbon with a straight cross-section as the tip. Do **not** sweep a brush along the skeleton or cut a crossing with a straight line: the root of the other stroke leaks early and the cut looks jagged (a client spotted it by pausing on a phone).
+- Compute the shape-to-pixel transform from the lockup's own placement numbers. Measuring the rendered bounding box is about 1 px off, which matters where two edges graze.
+- Any pixel no ribbon covers must be given an explicit time. A "nearest neighbor" fill can light a hairline sliver early, which shows as a bump on an otherwise smooth edge. If changing the curve does not move a bump, look at the time map.
+- Check **every** writing frame, not samples: `scripts/check_reveal.py` flags frames that have any edge besides the tip. Then zoom into the flagged ones, in the encoded video. Do not wave off a transient flaw as "only in motion".
 - Render the final frame from the official lockup split into layers, then diff the last video frame against a one-shot render.
 - Measure smoothness: per-frame ink added (reveals) or per-frame displacement and change of speed (moves). Vision models may sample video at 1 fps and cannot judge stutter.
 - Check frame 0 as a still: art that is clipped on one side while the others have margin looks like a mistake.

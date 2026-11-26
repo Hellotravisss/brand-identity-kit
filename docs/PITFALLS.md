@@ -81,3 +81,9 @@
 
 ## Image models
 - Image models silently rewrite small text (script conversion, changed characters). Proof every word of any generated image that contains text, and never use one as the final artwork.
+
+## Model-as-judge reviews
+- A vision judge misreads text, then argues from the misreading (a headline word that was never there; one wrong hex digit). Check every claim against the source file before acting on it.
+- A judge that never received the image still returns confident scores. Run a sight test the first time you use a model or attachment method.
+- A command-line agent used as judge may go off and search the web about the prompt instead of looking at the image. Forbid tools in the prompt, disable them in the call, and fail the run if any tool was called.
+- Scores are noisy and compressed: the same image moved 0.5, a badly broken layout lost under 1 point. Compare dimensions across two runs, not single totals.

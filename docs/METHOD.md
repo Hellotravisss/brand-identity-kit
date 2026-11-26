@@ -8,6 +8,13 @@ The method is opinionated. Every rule below exists because skipping it cost a ro
 
 ---
 
+## The acceptance line
+
+**A version of visual work is accepted only when it could be published on Behance as a portfolio piece.**
+Complete and usable is not enough: tell a story, lay out every board by hand, show believable mockups,
+proof both languages, use real data. After each version, run the blind review in `REVIEW.md`; if the score
+is below the pass line, optimize and review again.
+
 ## Phase 0 · Three checks before you draw anything (10 minutes)
 
 1. **What does the client already use?** `curl` their website: logo, CSS colors, fonts.

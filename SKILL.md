@@ -9,6 +9,13 @@ A method plus small tools for producing a whole brand system with an agent, wher
 by script and verified by machine**. Read `docs/METHOD.md` before starting; it is the playbook.
 `docs/PITFALLS.md` lists the traps that each cost a round of rework. `docs/CHECKLIST.md` is the deliverable list.
 
+## Acceptance line (applies to every version)
+
+Visual work is done only when it **could be published on Behance as a portfolio piece**. After each complete
+version: assemble the long image, have a second vision model score it blind, optimize if low, repeat
+(≤ 3 rounds). Default pass: mean of two runs ≥ 8.0 and no dimension below 7. Full procedure, prompt and
+how far to trust the score: `docs/REVIEW.md`.
+
 ## Workflow (one line per phase — details in METHOD.md)
 
 0. **Three checks first**: what the client's website/social already use; `dig` every domain/email you'll print;

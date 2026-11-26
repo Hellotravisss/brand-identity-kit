@@ -22,6 +22,8 @@ No client material is included here — only the method and generic tools.
 | `docs/METHOD.md` | The playbook — why each phase works the way it does |
 | `docs/PITFALLS.md` | Traps that each cost a round of rework (type, color, Illustrator, Office, headless Chrome) |
 | `docs/CHECKLIST.md` | Deliverable checklist |
+| `docs/REVIEW.md` + `docs/review-prompt.txt` | The acceptance gate: Behance-portfolio quality, blind-scored by a second vision model |
+| `scripts/stitch_boards.py` | Stack case-study boards into one long image |
 | `scripts/glyph_match.py` | Rebuild a wordmark on an OFL variable font, matching a draft's size, center and ink area |
 | `scripts/brandcolor.py` | OKLCH tint ramp + WCAG contrast verdicts |
 | `scripts/ai_export.jsx` | Illustrator batch export: RGB + brand-specified CMYK, AI/EPS(AI8)/PDF |

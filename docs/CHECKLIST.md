@@ -1,5 +1,13 @@
 # Deliverable checklist
 
+## Acceptance — before calling any visual version done
+- [ ] Every image opened and compared side by side with strong Behance case studies
+- [ ] Assembled into one long image (`scripts/stitch_boards.py`), privacy-checked
+- [ ] Two blind runs by a second vision model with the unchanged prompt (`REVIEW.md`)
+- [ ] Every criticism verified against image + source; hard errors fixed
+- [ ] Pass line met (mean ≥ 8.0, no dimension below 7), or the gap reported to the owner after ≤ 3 rounds
+- [ ] All scores and raw replies saved with the version
+
 ## Before starting
 - [ ] Current website / app / social accounts audited (logo, colors, fonts in use)
 - [ ] `dig` www + MX for every domain that will be printed

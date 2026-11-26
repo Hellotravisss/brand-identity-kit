@@ -13,8 +13,8 @@ Mockups and photographs lift the overall impression and can hide a weak system. 
 | **1 · Design** | Flat design sheets only: mark, graphic system, several layout skeletons, type, color. No photos, no mockups | `docs/review-prompt-design.txt` |
 | **2 · Presentation** | The full case study: boards plus applications and mockups | `docs/review-prompt.txt` |
 
-Do not start mockups until gate 1 is passed (or the owner decides to move on). Each gate has its own
-pass line and its own calibration. It sits on top of your own check; the person you work for has the final say.
+Do not start mockups while the design sheets still have verified defects (`STANDARD.md`, part B). The review
+sits on top of your own check. Pass or fail is decided by `STANDARD.md`.
 
 ## Calibrate before you trust a pass line
 
@@ -60,16 +60,12 @@ A threshold means nothing until you know what the judge gives to work that is al
 
 ## Pass line
 
-**There is no default number.** A numeric gate exists only where calibration (above) separated featured from
-ordinary work for that prompt, model and way of attaching files. In the first calibration it did not (see the
-table at the end), so with these prompts:
+**Pass or fail comes from [`STANDARD.md`](STANDARD.md)**: all required items present and zero verified
+defects. It does not come from a model score (the first calibration showed scores cannot gate) and it does
+not depend on anyone's taste. Record scores for reference; use the reviews to find defects and shared problems.
 
-- record every score, but **do not pass or fail work on it**;
-- use the reviews to find **verified hard errors** and **problems that both judges raise**;
-- **the owner decides** whether a version meets the portfolio line, helped by a side-by-side with featured work.
-
-The seven dimensions fit a brand case study. For other visual work (store screenshots, posters, UI), swap
-out the dimensions that cannot apply **before the first run**, then keep that prompt for every version.
+The seven score dimensions fit a brand case study. For other visual work (store screenshots, posters, UI),
+swap out the dimensions that cannot apply **before the first run**, then keep that prompt for every version.
 
 ## Handling the criticism
 
@@ -95,7 +91,7 @@ no verified hard error to fix, **stop polishing and diagnose** what remains:
 
 - **Structural** (for example the graphic system does not belong to the mark): propose a change of direction
   to the owner; start a new round only after they agree.
-- **Matters of taste, or only details left:** bring the owner the work and the open points and ask whether to ship.
+- **Only matters of taste left and `STANDARD.md` passes:** ship; list the open points.
 
 Report every run, never only the best one. Never edit a prompt or its anchors to raise a score.
 

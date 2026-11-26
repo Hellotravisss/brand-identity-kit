@@ -23,6 +23,7 @@ No client material is included here — only the method and generic tools.
 | `docs/PITFALLS.md` | Traps that each cost a round of rework (type, color, Illustrator, Office, headless Chrome) |
 | `docs/CHECKLIST.md` | Deliverable checklist |
 | `docs/REVIEW.md` + `docs/review-prompt*.txt` | The acceptance gate: Behance-portfolio quality; design gate then presentation gate, blind-reviewed by two vision models; scores only gate if calibration shows they can |
+| `docs/STANDARD.md` | Pass/fail release standard (required items + zero defects) and the study behind it |
 | `scripts/stitch_boards.py` | Stack case-study boards into one long image |
 | `scripts/glyph_match.py` | Rebuild a wordmark on an OFL variable font, matching a draft's size, center and ink area |
 | `scripts/brandcolor.py` | OKLCH tint ramp + WCAG contrast verdicts |

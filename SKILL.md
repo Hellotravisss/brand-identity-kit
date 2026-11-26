@@ -13,9 +13,9 @@ by script and verified by machine**. Read `docs/METHOD.md` before starting; it i
 
 Visual work is done only when it **could be published on Behance as a portfolio piece**. Two gates, scored
 blind by two different vision models: **design first** (flat sheets, no mockups), then **presentation**
-(the full case study). Do not pass or fail on a score unless calibration showed the judge separates featured
-from ordinary work (so far it has not): use reviews to catch hard errors and shared problems; the owner
-decides. Show the owner each proposed fix. At most 3 rounds per gate.
+(the full case study). **Pass = `docs/STANDARD.md`** (all required items + zero verified defects), not a model score and not
+anyone's taste; reviews are for catching defects and shared problems. Show the owner each proposed fix.
+At most 3 rounds per gate.
 Full procedure and prompts: `docs/REVIEW.md`.
 
 ## Workflow (one line per phase — details in METHOD.md)

@@ -1,14 +1,14 @@
 # Deliverable checklist
 
 ## Acceptance — before calling any visual version done
-- [ ] No numeric pass/fail unless calibration separated featured from ordinary work for this prompt, model and attach method
+- [ ] Model scores recorded for reference only
 - [ ] Gate 1 (flat design sheets only) passed, or the owner chose to move on, before any mockups
 - [ ] Every image opened and compared side by side with strong Behance case studies
 - [ ] Gate 2: full case study, privacy-checked, scored blind by two different models with the unchanged prompt
 - [ ] Table shown to the owner: problem · proposed fix · what you will do
 - [ ] Factual criticisms verified against image + source; hard errors fixed
 - [ ] No verified hard errors left; remaining points diagnosed (structural vs taste/detail); at most 3 rounds per gate
-- [ ] The owner has decided, with a side-by-side against featured work
+- [ ] `STANDARD.md`: every required item present and zero verified defects (that is the pass, nothing else)
 - [ ] All scores and raw replies saved with the version
 
 ## Before starting

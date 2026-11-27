@@ -110,3 +110,6 @@
 - Measure smoothness: per-frame ink added (reveals) or per-frame displacement and change of speed (moves). Vision models may sample video at 1 fps and cannot judge stutter.
 - Check frame 0 as a still: art that is clipped on one side while the others have margin looks like a mistake.
 - Some desktop mail clients show only the first frame of a GIF. Do not offer a draw-on animation (blank first frame) as an email signature.
+
+## Publishing the case study
+- Real addresses can be printed on mockups through code paths nobody looks at (per-person overrides that replace name and phone but keep the address). Build portfolio assets from a **public variant** behind a switch, keep client files unchanged (compare bytes), and have mockups read only the public folder. Outlined text cannot be searched afterwards, so log every string passed to the outliner and scan that list.

@@ -34,13 +34,28 @@
     doc.saveAs(new File(ROOT + "/RGB/AI/" + base + ".ai"), ai);
     doc.saveAs(new File(ROOT + "/RGB/PDF/" + base + ".pdf"), pdf);
 
-    // CMYK: remember each path's RGB, switch document mode, then assign the specified values
-    var items = [], cols = [];
+    // CMYK: record each path's RGB, then copy the art into a NEW CMYK document. The menu command
+    // "doc-color-cmyk" silently does nothing on some builds (seen on Illustrator 31 beta), which leaves
+    // an RGB document and lets the PDF preset invent its own separations.
+    var cols = [];
     for (var p = 0; p < doc.pathItems.length; p++) {
       var it = doc.pathItems[p];
-      if (it.filled && it.fillColor.typename == "RGBColor") { items.push(it); cols.push(hex(it.fillColor)); }
+      cols.push(it.filled && it.fillColor.typename == "RGBColor" ? hex(it.fillColor) : null);
     }
-    app.executeMenuCommand("doc-color-cmyk");
+    var ab = doc.artboards[0].artboardRect;
+    var cdoc = app.documents.add(DocumentColorSpace.CMYK, ab[2] - ab[0], ab[1] - ab[3]);
+    if (cdoc.documentColorSpace != DocumentColorSpace.CMYK) throw new Error("could not create a CMYK document");
+    cdoc.artboards[0].artboardRect = ab;
+    for (var g = doc.pageItems.length - 1; g >= 0; g--) {
+      if (doc.pageItems[g].parent.typename == "Layer")
+        doc.pageItems[g].duplicate(cdoc.layers[0], ElementPlacement.PLACEATBEGINNING);
+    }
+    doc.close(SaveOptions.DONOTSAVECHANGES);
+    doc = cdoc;
+    if (doc.pathItems.length != cols.length) throw new Error(base + ": path count changed while copying");
+    var items = [], keys = [];
+    for (var r = 0; r < doc.pathItems.length; r++) if (cols[r]) { items.push(doc.pathItems[r]); keys.push(cols[r]); }
+    cols = keys;
     for (var q = 0; q < items.length; q++) {
       var m = MAP[cols[q]];
       if (!m) { miss.push(base + ":" + cols[q]); continue; }
@@ -51,7 +66,10 @@
     eps.compatibility = Compatibility.ILLUSTRATOR8;      // AI10+ embeds private editing data (~0.8 MB/file)
     eps.embedAllFonts = false; eps.preview = EPSPreview.None; eps.includeDocumentThumbnails = false;
     doc.saveAs(new File(ROOT + "/CMYK/EPS/" + base + ".eps"), eps);
-    doc.saveAs(new File(ROOT + "/CMYK/PDF/" + base + ".pdf"), pdf);
+    var cp = new PDFSaveOptions(); cp.pDFPreset = "[PDF/X-1a:2001]";
+    doc.saveAs(new File(ROOT + "/CMYK/PDF/" + base + ".pdf"), cp);
+    var back = items.length ? items[0].fillColor : null;           // read it back: assignment can fail silently
+    if (!back || back.typename != "CMYKColor") throw new Error(base + ": fill is not CMYK after assignment");
     log.push(base + " | recolored " + items.length);
     doc.close(SaveOptions.DONOTSAVECHANGES);
   }

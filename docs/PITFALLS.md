@@ -25,6 +25,12 @@
 - AppleScript default timeout is 2 min: wrap in `with timeout of 900 seconds`.
 - Set `app.userInteractionLevel = DONTDISPLAYALERTS` or a dialog will hang the batch.
 - Recolor for CMYK: record each path's RGB first, run `doc-color-cmyk`, then assign specified CMYK.
+- `app.executeMenuCommand("doc-color-cmyk")` can silently do nothing (seen on Illustrator 31 beta): the
+  document stays RGB, CMYK assignments read back as RGB, and a PDF/X preset then makes its own separations
+  (pure black came out as C70 M67 Y64 K74). A script that only counts recolored paths reports success.
+  Create a new CMYK document, copy the art in, read one fill back, and **parse the output PDF** for the
+  operators and values (`scripts/print_check.py`). A brand color that happens to equal the automatic
+  conversion will pass by coincidence, so check black too.
 - PDF bleed offsets round to whole points (8.5 pt → 8 pt). Use 9 pt and paint ≥ 4 mm of art.
 - EPS with AI10+ compatibility embeds private data (~0.8 MB/file); AI8 compatibility is small.
 - Beta builds have a different bundle id (`com.adobe.illustratorBeta`).

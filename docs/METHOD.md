@@ -114,6 +114,23 @@ email signatures as HTML tables, social avatars (1:1, shapes inside a 70% safe c
 inside the circle), `tokens.css` with CSS variables and `.brand-*` component classes, an SVG icon sprite,
 product sub-brand badges in the parent's language, spot illustrations made only of brand shapes.
 
+## Phase 7b · Logo motion
+
+- **Storyboard first**: 2–3 directions as still frames, built from the brand's own shapes. Let the owner pick
+  before animating. If two are good, give them **different jobs** instead of choosing: e.g. a pattern reveal
+  as the *opener* (video intro, deck cover, lobby and booth screens, web hero) and a draw-on as the *closer*
+  (end card, app splash, social posts). In one film: opener first, draw-on last.
+- The last frame is the **official lockup**, rendered from the same source split into layers. Diff the last
+  video frame against a one-shot render.
+- **Write-on**: split the mark into strokes first (the way motion designers do): each stroke is a ribbon whose
+  edges are the mark's own outline segments, bridged at crossings by a short curve along the incoming
+  tangent; the tip is a straight cross-section. Composite shape ∩ revealed at 3× and downsample.
+- Verify motion by measurement **and** by eye: ink added or movement per frame (stutter), every writing frame
+  through `scripts/check_reveal.py` (stray edges), then zoom into frames extracted from the encoded video.
+  A coverage curve and a correct last frame say nothing about the shape of the frames in between.
+- State where each animation is used, and only promise uses you can stand behind (some desktop mail clients
+  show just the first frame of a GIF, which is blank in a draw-on).
+
 ## Phase 8 · Office templates people actually use
 
 - PPT: `python-pptx`, 8 layouts (cover, TOC, section, content, 3-column, data, quote, closing), all text
@@ -135,6 +152,23 @@ page, computes TOC page numbers, and merges. Text on pages stays short — one h
 One folder per use (manual, logo RGB/CMYK, print files, templates, fonts, avatars, digital, web, merch)
 with a "read me first". Email limits: keep each message's attachments ≤ ~18 MB raw (base64 adds ~37%);
 `scripts/split_for_email.py` packs folders into numbered zips and verifies nothing is missing.
+
+## Phase 11 · The portfolio case study
+
+- **Order tells the story**: cover → hero mockup → story (who, what, why the graphics look like this) → logo
+  → craft detail → color and type → graphic system → applications → motion → credits.
+- **Boards are code**: every board is rebuilt from the real vectors with embedded font subsets, and an
+  assemble script writes numbered upload modules plus one long preview image. Change a source, rerun the chain.
+- **Motion in the case study**: one board with a few labeled frames per animation (extracted from the final
+  video by the script, so they stay in sync) and one line on where each is used. Upload GIF/video as separate
+  modules; keep them out of the static long image so frames are not duplicated.
+- **Mockups**: image models generate blank scenes only; warp the real artwork onto them in code.
+- **Clear it before it is shown**: client facts are private by default. Ask which business facts may be said,
+  and whether addresses and people may appear. Build a **public variant** of anything with contact details
+  (city only, fictional people) behind a switch, and leave the client's print files untouched.
+- **Credits**: say what was AI-generated (and any attribution the tool requires), and which names, phones
+  and emails are fictional.
+- Pass or fail with `STANDARD.md`, then keep the defect table with the version.
 
 ---
 

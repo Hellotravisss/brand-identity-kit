@@ -1,15 +1,15 @@
 # Deliverable checklist
 
 ## Acceptance — before calling any visual version done
-- [ ] Model scores recorded for reference only
+- [ ] Defect hunt run on the final version (`defect-hunt-prompt.txt`); scores, if any, recorded for reference only
 - [ ] Gate 1 (flat design sheets only) passed, or the owner chose to move on, before any mockups
 - [ ] Every image opened and compared side by side with strong Behance case studies
-- [ ] Gate 2: full case study, privacy-checked, scored blind by two different models with the unchanged prompt
+- [ ] Gate 2: full case study, privacy-checked; two different models review it with the unchanged prompt to find shared problems
 - [ ] Table shown to the owner: problem · proposed fix · what you will do
 - [ ] Factual criticisms verified against image + source; hard errors fixed
 - [ ] No verified hard errors left; remaining points diagnosed (structural vs taste/detail); at most 3 rounds per gate
 - [ ] `STANDARD.md`: every required item present and zero verified defects (that is the pass, nothing else)
-- [ ] All scores and raw replies saved with the version
+- [ ] Defect table saved with the version (report · verified or false alarm · action), plus raw replies
 
 ## Before starting
 - [ ] Current website / app / social accounts audited (logo, colors, fonts in use)
@@ -43,6 +43,18 @@
 - [ ] PPT (.pptx) editable, previewed
 - [ ] Letterhead (.docx), envelope
 - [ ] Font files + install note + licenses
+
+## Logo motion
+- [ ] Storyboard approved before animating; each animation has a stated use
+- [ ] Last frame diffed against the official lockup; frame 0 checked as a still
+- [ ] Smoothness measured; every writing frame through `check_reveal.py`; flagged frames zoomed in
+- [ ] Frames extracted from the encoded video looked at (also on a phone if the owner will watch there)
+
+## Portfolio case study
+- [ ] Publishable client facts confirmed **before** they go on a board or to an external model
+- [ ] Public variant used for anything with contact details; client files unchanged (compare bytes)
+- [ ] Specimens do not set the brand name in the uncustomized base font; stated rules match the applications
+- [ ] Credits: AI use and required attribution; fictional names, phones, emails
 
 ## Handover
 - [ ] "Read me first" index

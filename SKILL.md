@@ -1,6 +1,6 @@
 ---
 name: brand-identity-kit
-description: Build a complete brand identity system (VI / 品牌视觉识别 / 品牌手册) end to end — wordmark rebuilt on a licensable open font, logo lockups in every color mode (RGB + print CMYK), color and contrast rules, auxiliary graphics, business cards with bleed, Office templates (PPT / Word letterhead), digital and web assets, merch, and a compiled brand manual PDF. Use whenever someone asks for a logo package, brand manual / brand guidelines / VI 手册, business card print files, a 品牌全套 / 整套视觉, or to "make the rest of the brand" from an existing logo — even if they only mention one piece. Especially strong for Chinese / bilingual brands (CJK type, 国内印刷, WeChat assets).
+description: Build a complete brand identity system (VI / 品牌视觉识别 / 品牌手册) end to end — wordmark rebuilt on a licensable open font, logo lockups in every color mode (RGB + print CMYK), color and contrast rules, auxiliary graphics, business cards with bleed, Office templates (PPT / Word letterhead), digital and web assets, merch, a compiled brand manual PDF, logo animation, and a Behance-ready portfolio case study. Use whenever someone asks for a logo package, brand manual / brand guidelines / VI 手册, business card print files, logo motion / Logo 动画, a 作品集 / Behance case study, a 品牌全套 / 整套视觉, or to "make the rest of the brand" from an existing logo — even if they only mention one piece. Especially strong for Chinese / bilingual brands (CJK type, 国内印刷, WeChat assets).
 ---
 
 # brand-identity-kit
@@ -11,12 +11,12 @@ by script and verified by machine**. Read `docs/METHOD.md` before starting; it i
 
 ## Acceptance line (applies to every version)
 
-Visual work is done only when it **could be published on Behance as a portfolio piece**. Two gates, scored
-blind by two different vision models: **design first** (flat sheets, no mockups), then **presentation**
-(the full case study). **Pass = `docs/STANDARD.md`** (all required items + zero verified defects), not a model score and not
-anyone's taste; reviews are for catching defects and shared problems. Show the owner each proposed fix.
+Visual work is done only when it **could be published on Behance as a portfolio piece**. Get the **design**
+through first (flat sheets, no mockups), then the **presentation** (the full case study).
+**Pass = `docs/STANDARD.md`**: every required item present and zero verified defects. Not a model score and
+not anyone's taste. Vision models only hunt defects and shared problems (`docs/REVIEW.md`); verify every
+report before acting, and show the owner the table: problem · proposed fix · what you did.
 At most 3 rounds per gate.
-Full procedure and prompts: `docs/REVIEW.md`.
 
 ## Workflow (one line per phase — details in METHOD.md)
 
@@ -33,14 +33,20 @@ Full procedure and prompts: `docs/REVIEW.md`.
 6. **Print**: outlined text, art with 4 mm bleed, PDF/X-1a with 9 pt bleed, single-black small text;
    verify with `scripts/print_check.py`.
 7. **Digital / web**: favicon set, share card, WeChat covers, avatars, email signature, `tokens.css`, icon sprite.
+   **Motion**: storyboard first; last frame = official lockup; write-on = split into stroke ribbons, then check
+   every frame (`scripts/check_reveal.py`) and look at frames from the encoded video.
 8. **Office**: `.pptx` (python-pptx) and Word letterhead (python-docx) + the OFL font files.
 9. **Manual**: HTML pages → PNG (review) + vector PDF → compiled with computed TOC. Few words per page.
 10. **Deliver**: folders by use + "read me first"; `scripts/split_for_email.py` for attachment limits.
+11. **Portfolio case study**: boards built by script from real vectors, mockups = blank AI scenes + your artwork,
+    motion board + separate GIF modules, public variant for contact details, AI credits.
 
 ## Rules
 
 - Verify everything you generate: render and look, or measure. "Looks done" is not done.
 - Never invent client facts (product descriptions, slogans, phone numbers). Leave blanks, list questions.
+- Client facts are **private by default**: ask before they go on a portfolio board or to an external model.
+- A flaw you noticed is a flaw to fix, even if it lasts a few frames or looks minor to you.
 - Flag conflicts between client documents and earlier decisions instead of silently picking one.
 - Show copy/emails to the person you work for before anything goes out.
 

@@ -1,8 +1,28 @@
-# Blind review — the acceptance gate for visual work
+# Review with vision models — find defects, not verdicts
 
 **Acceptance line: the work is good enough to publish on Behance as a portfolio piece.**
-"All assets exist" and "usable" are not done. After **each complete version**, other vision models score it.
-If the score is low, optimize and score again. The maker never grades their own work alone.
+"All assets exist" and "usable" are not done. Whether a version passes is decided by [`STANDARD.md`](STANDARD.md).
+Models are used for two things, and neither of them is the verdict:
+
+| Pass | Prompt | Output used for |
+|---|---|---|
+| **Defect hunt** (needed for `STANDARD.md` part B) | `docs/defect-hunt-prompt.txt` — no scores, no taste | A list of suspects to verify |
+| **Blind critique** (while the design is still moving) | the two gate prompts below | Shared problems and proposed fixes; scores are recorded for reference only |
+
+The maker never grades their own work alone.
+
+## Running a defect hunt
+
+1. Run your own pass with the `STANDARD.md` B list first, zooming in on every image.
+2. Send boards with zoom tiles and copy sheet, mockups a few per call, to two models. Split into batches
+   so one call does not time out. For motion, also run `scripts/check_reveal.py`; a video model may sample
+   only 1 frame per second.
+3. Treat every report as a suspect. Confirm it on the pixels **and** the source before changing anything.
+   Settle geometry and color claims with numbers (tangent angle at a joint, the fill value in the file, the
+   lightness of a pixel), not with another look at a downscaled image.
+4. Keep a table per version: *report · verified or false alarm (how you know) · what you did*. False alarms
+   are worth writing down so nobody "fixes" them later.
+5. After fixing, open every changed page again. Say plainly which fixes did not go back to a model.
 
 ## Two gates: design first, presentation second
 
@@ -16,17 +36,17 @@ Mockups and photographs lift the overall impression and can hide a weak system. 
 Do not start mockups while the design sheets still have verified defects (`STANDARD.md`, part B). The review
 sits on top of your own check. Pass or fail is decided by `STANDARD.md`.
 
-## Calibrate before you trust a pass line
+## Calibrate before you read anything into a score
 
-A threshold means nothing until you know what the judge gives to work that is already good.
+A score means nothing until you know what the judge gives to work that is already good.
 
 1. Pick 3 projects from a curated or featured gallery and 1 ordinary one, same category.
 2. Capture only the project images. **Crop out everything that reveals status**: platform chrome, feature
    ribbons, like and view counts, author names. Attach them the same way you attach your own work.
 3. Score all four with every judge model, same prompt, blind.
-4. If the featured work scores clearly above the ordinary one (gap larger than the run-to-run noise),
-   set each model's pass line from **its own** featured scores. If it does not separate them, **there is no
-   numeric gate** with that judge: use the review only to find problems, and let the owner decide.
+4. If the featured work does not score clearly above the ordinary one (gap larger than the run-to-run
+   noise), the score tells you nothing about quality with that judge: use it only to find problems. In
+   neither case does a score decide pass or fail; `STANDARD.md` does.
 5. Use the captures only for this internal check; do not publish or commit them. Record URLs and scores.
    Recalibrate when the prompt, the model or the way of attaching files changes.
 
@@ -48,7 +68,6 @@ A threshold means nothing until you know what the judge gives to work that is al
    | Situation | Runs |
    |---|---|
    | Every version | one run from each of two models |
-   | Close to the pass line, deciding pass or fail | one more run from each |
    | One model unavailable (quota, error) | two runs of the other; do not wait |
 
    Compare versions only between runs of the **same model, prompt and way of attaching files**. With a
@@ -58,7 +77,7 @@ A threshold means nothing until you know what the judge gives to work that is al
    still happily return scores.
 6. **Save** the images, prompt, raw replies and a score table per version (`review/<date_version>/`).
 
-## Pass line
+## What decides pass or fail
 
 **Pass or fail comes from [`STANDARD.md`](STANDARD.md)**: all required items present and zero verified
 defects. It does not come from a model score (the first calibration showed scores cannot gate) and it does

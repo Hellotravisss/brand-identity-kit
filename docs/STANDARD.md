@@ -28,11 +28,15 @@ spec pages belong in the client delivery but are **not** a mark of featured work
 - Generated-image artifacts (gibberish lettering, warped objects)
 - A stated rule that the applications contradict
 - Fonts that did not load; the mark redrawn or recolored
-- Visible kinks or joins in curves and letterforms
+- Visible kinks or joins in curves and letterforms — **in any single frame of motion too**, transients
+  included (viewers pause); frame 0 is judged as a still
 - Graphics chopped into fragments by a plate, edge or fixing
+- Contact details, addresses or client facts shown without being cleared for publication
 
-How: your own pass with this list, then ask two vision models to hunt **only for these**, then zoom in and
-confirm each one in the image and the source. Only confirmed defects count.
+How: your own pass with this list, then ask two vision models to hunt **only for these**
+(`defect-hunt-prompt.txt`), then zoom in and confirm each one in the image and the source. For a write-on
+animation also run `scripts/check_reveal.py` over every writing frame. Only confirmed defects count.
+The last item is not something a model can settle: ask the client or the owner.
 
 ## C · Design quality — no validated test yet
 

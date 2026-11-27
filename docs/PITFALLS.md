@@ -90,6 +90,12 @@
 - Vision tools silently downscale (about 1 MP in one agent CLI). Send boards separately with zoom tiles and the source copy text; a stitched long page is the worst case for small type.
 - If a judge gets a file-reading tool, check from the tool-call log that it read every attachment, and discard the run if it did not.
 
+- At small sizes anti-aliasing makes a black mark look tinted, and a model reports "two color versions".
+  Read the fill value in the source.
+- "There is a corner in this curve" / "this is continuous": measure the tangent angle on both sides of the
+  joint. A change in curvature is not a corner.
+- A video-capable model may see only 1 frame per second; it cannot judge stutter or a flaw that lasts 0.2 s.
+
 ## Presentation boards and mockups
 - Headless Chrome **silently substitutes fonts** that are not installed: a type-specimen board can name one family and render another, and it can survive several rounds of review. Embed a subset of the real font files (fontTools `subset` → base64 `@font-face`) and look for a family-specific shape in the render.
 - Figures in some display serifs default to old-style numerals. Turn on `lnum` for phone numbers, addresses and color codes (HarfBuzz feature when outlining, `font-variant-numeric` in SVG).

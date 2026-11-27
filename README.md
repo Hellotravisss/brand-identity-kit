@@ -18,11 +18,13 @@ No client material is included here — only the method and generic tools.
 
 | Path | What |
 |---|---|
-| `SKILL.md` | The skill: when to use it and the 10-phase workflow |
+| `SKILL.md` | The skill: when to use it and the phase-by-phase workflow |
 | `docs/METHOD.md` | The playbook — why each phase works the way it does |
 | `docs/PITFALLS.md` | Traps that each cost a round of rework (type, color, Illustrator, Office, headless Chrome) |
 | `docs/CHECKLIST.md` | Deliverable checklist |
-| `docs/REVIEW.md` + `docs/review-prompt*.txt` | The acceptance gate: Behance-portfolio quality; design gate then presentation gate, blind-reviewed by two vision models; scores only gate if calibration shows they can |
+| `docs/REVIEW.md` + `docs/*prompt*.txt` | Using vision models to find defects and shared problems (defect hunt; design and presentation critiques). Models never give the verdict |
+| `scripts/check_reveal.py` | Check every frame of a write-on logo animation for edges other than the pen tip |
+| `scripts/gemini_image.py` | Generate reference images (then redraw in vectors) |
 | `docs/STANDARD.md` | Pass/fail release standard (required items + zero defects) and the study behind it |
 | `scripts/stitch_boards.py` | Stack case-study boards into one long image |
 | `scripts/glyph_match.py` | Rebuild a wordmark on an OFL variable font, matching a draft's size, center and ink area |
@@ -35,7 +37,7 @@ No client material is included here — only the method and generic tools.
 
 ```bash
 git clone https://github.com/Hellotravisss/brand-identity-kit ~/.claude/skills/brand-identity-kit
-pip install fonttools skia-pathops pillow numpy pypdf python-pptx python-docx
+pip install fonttools skia-pathops pillow numpy scipy pypdf python-pptx python-docx
 ```
 
 ## Quick examples
@@ -51,13 +53,16 @@ python3 scripts/glyph_match.py --ref draft.svg --path-index 3 --text 品牌 \
 # Print: pre-flight a business card
 python3 scripts/print_check.py card.pdf --trim 90x54 --bleed 3
 
+# Motion: flag frames with a stray edge while the mark is being written (needs ffmpeg)
+python3 scripts/check_reveal.py logo.mp4 --start 10 --end 165
+
 # Deliver: split for email
 python3 scripts/split_for_email.py ./delivery --limit 18 --out ./mail
 ```
 
 ## The one habit that matters
 
-Render it and look, or measure it — after every step. Most defects in the source project
+Render it and look, or measure it — after every step. When the owner will see motion, look at every frame. Most defects in the source project
 (a font falling back to Times, a CMYK tint turning purple, a slogan running off a banner,
 a bleed rounded down to 2.82 mm) were invisible until checked.
 
